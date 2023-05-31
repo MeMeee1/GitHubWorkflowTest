@@ -1,0 +1,13 @@
+name: Project has closed
+on:
+  project:
+    types: closed
+jobs:
+  new-release:
+    runs-on:ubuntu-latest
+    steps:
+      - name: gets project board name
+        id: gets_project_name
+        run: |
+          PROJECT_NAME=$(echo "${{ github.event.project.name }}")
+          
