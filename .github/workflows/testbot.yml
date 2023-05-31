@@ -1,13 +1,33 @@
-name: Tracking stuff
+name: New release
+# triggers the workflow when a tag is created
 on:
-  issues:
-    types: [opened]
+ create:
+  ref_type: tag
 jobs:
-  auto-assign:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Auti assign issue'
-        uses: pozil/auto-assign-issue@v1.0.3
-        with:
-          repo-token: ${{secrets.GITHUB_TOKEN}}
-          assignes: MeMeee1
+ release:
+  runs-on: ubuntu-latest
+# sends slack a notification that the job is starting
+  steps:
+   - name: Job start slack notification
+     uses: act10ns/slack@v1
+     with:
+      status: 'START'
+     env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+     if: always()
+   - uses: actions/checkout@v2
+   - name: Install Ruby 2.7
+     uses: ruby/setup-ruby@v1
+     with:
+      ruby-version: '2.7'
+   - name: Build gem
+     run: gem build *.gemspec
+
+   - name: Job finish slack notification
+     uses: act10ns/slack@v1
+     with:
+      status: ${{ job.status }}
+     env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+     if: always()
+ 
