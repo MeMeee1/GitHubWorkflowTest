@@ -12,8 +12,10 @@ jobs:
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
       if: ${{ success() }}
+   
+      
       with:
-       args: '{\"text\":\"Hello world\"}'
+        args: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
         
       env:
         SLACK_USERNAME: The Dev Bot
