@@ -1,33 +1,14 @@
-name: New release
-# triggers the workflow when a tag is created
-on:
- create:
-  ref_type: tag
+name: Slack Notification Demo
+on: 
+  push:
 jobs:
- release:
-  runs-on: ubuntu-latest
-# sends slack a notification that the job is starting
-  steps:
-   - name: Job start slack notification
-     uses: act10ns/slack@v1
-     with:
-      status: 'START'
-     env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-     if: always()
-   - uses: actions/checkout@v2
-   - name: Install Ruby 2.7
-     uses: ruby/setup-ruby@v1
-     with:
-      ruby-version: '2.7'
-   - name: Build gem
-     run: gem build *.gemspec
-
-   - name: Job finish slack notification
-     uses: act10ns/slack@v1
-     with:
-      status: ${{ job.status }}
-     env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-     if: always()
- 
+  slackNotification:
+    name: Testing my bot outtttttttt
+    runs-on: ubuntu-latest
+    steps:
+    - name: Notify slack
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK }}
+      uses: pullreminders/slack-action@master
+      with:
+        args: '{\"channel\":\"C05AT5R2QC9\",\"text\":\"Hello world this is me \"}'
