@@ -12,5 +12,8 @@ jobs:
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
       env:
+        SLACK_USERNAME: The Dev Bot
+        SLACK_TITLE: NEW ART 🎨🎭 
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_MESSAGE: 'Post Content :rocket:'
+        SLACK_MESSAGE: 'Post Content :rocket'
+        SLACK_ICON: https://drive.google.com/file/d/1AOioxNRkF4XKi5S-n30nap_q9E7ipa_T/view?usp=sharing
