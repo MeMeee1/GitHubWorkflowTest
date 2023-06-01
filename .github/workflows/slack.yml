@@ -9,17 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Add Hello World message
+      run: echo "::set-env name=MESSAGE::Hello World"
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
-      if: ${{ success() }}
+ 
    
-      
-      with:
-        args: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
+  
         
       env:
         SLACK_USERNAME: The Dev Bot
         SLACK_TITLE: NEW ART 🎨🎭 
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_MESSAGE: 'Post Content :rocket'
+       
         SLACK_ICON: https://drive.google.com/file/d/1AOioxNRkF4XKi5S-n30nap_q9E7ipa_T/view?usp=sharing
