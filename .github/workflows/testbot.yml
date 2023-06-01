@@ -11,4 +11,4 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_WEBHOOK }}
       uses: pullreminders/slack-action@master
       with:
-        args: '{\"channel\":\"C05ALLGDW1G\",\"text\":\"Hello world this is me \"}'
+        args: '{\"channel\":\"C05ALHJN22F\",\"text\":\"Hello world this is me \"}'
