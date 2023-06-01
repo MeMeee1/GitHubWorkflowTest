@@ -20,7 +20,8 @@ jobs:
         MESSAGE: The dog is green
         SLACK_ICON: https://drive.google.com/file/d/1AOioxNRkF4XKi5S-n30nap_q9E7ipa_T/view?usp=sharing
     - name: Notify slack
-  
+      env:
+        SLACK_BOT_TOKEN: ${{  secrets.SLACK_WEBHOOK }}
       uses: pullreminders/slack-action@master
       with:
         args: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
