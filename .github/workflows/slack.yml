@@ -1,6 +1,5 @@
 name: Slack Notification Demo
 on: 
-  push:
   schedule: 
     - cron: '*/5 * * * *'
 
