@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Add Hello World message
-      run: echo "::set-env name=MESSAGE::Hello World"
+      run: echo "name=MESSAGE::Hello World"
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
  
